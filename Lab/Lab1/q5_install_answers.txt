@@ -1,0 +1,9 @@
+Question 5
+What is the command to install the app?
+adb install "C:\Users\Jia Zhe\Downloads\lab01\edu.singaporetech.shadyapp.apk"
+
+How do you list all installed app packages?
+pm list packages -f | sed -e 's/.*=//' | sort
+
+How do you uninstall applications via command line?
+adb uninstall <Package Name>

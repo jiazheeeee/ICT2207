@@ -1,0 +1,1 @@
+Spotify is the process that is playing the music. There is also a process started by android audio server.

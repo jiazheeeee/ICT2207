@@ -1,0 +1,178 @@
+Question 6
+How do you view android log information from the command line?
+abd logcat
+
+What does this app do?
+Logcat is a command-line tool that dumps a log of system messages, including stack traces when the device throws an error and messages that you have written from your app with the Log class.
+
+Logs displayed by adb logcat undergo four levels of filtering:
+1. Compile-time filtering: depending on compilation settings, some logs may be completely removed from the binary.
+2. System property filtering: liblog queries a set of system properties to determine the minimum severity level to be sent to logd.
+3. Application filtering: If none of the properties are set, liblog uses the minimum priority set by __android_log_set_minimum_priority. The default setting is INFO.
+4. Display filtering: adb logcat supports additional filters that can reduce the amount of logs shown from logd.
+
+
+Clear log command
+adb logcat -c
+
+Shady App logs after triggering the application
+
+Shady Application logs capturing information:
+01-21 03:17:06.775   982   982 D TaplEvents: Main / Touch event: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=483.96973, y[0]=
+1361.9531, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0
+, eventTime=7048721, downTime=7048721, deviceId=9, source=0x5002, displayId=0 }
+01-21 03:17:06.835   982   982 D TaplEvents: Main / Touch event: MotionEvent { action=ACTION_UP, actionButton=0, id[0]=0, x[0]=483.96973, y[0]=13
+61.9531, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, classification=NONE, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0,
+eventTime=7048780, downTime=7048721, deviceId=9, source=0x5002, displayId=0 }
+01-21 03:17:06.840   982   982 D TaplEvents: Main / start: startAppShortcutOrInfoActivity
+01-21 03:17:06.841   536  1540 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200
+000 cmp=edu.singaporetech.shadyapp/.MainActivity bnds=[317,1219][586,1588]} from uid 10109
+01-21 03:17:06.842   536   575 D EventSequenceValidator: Transition from ACTIVITY_FINISHED to INTENT_STARTED
+01-21 03:17:06.845   536  3419 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+01-21 03:17:06.845   536  3419 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+01-21 03:17:06.849   424   424 I perfetto: ing_service_impl.cc:758 Configured tracing session 22, #sources:1, duration:5000 ms, #buffers:1, total
+ buffer size:4096 KB, total sessions:1, uid:1071 session name: ""
+01-21 03:17:06.849   417   417 I perfetto: probes_producer.cc:230  Ftrace setup (target_buf=22)
+01-21 03:17:06.850   536   575 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10122; state: DISABLED
+01-21 03:17:06.850   536   583 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10122; state: DISABLED
+01-21 03:17:06.851   536   575 D EventSequenceValidator: Transition from INTENT_STARTED to ACTIVITY_LAUNCHED
+01-21 03:17:06.860   318   318 D goldfish-address-space: claimShared: Ask to claim region [0x3f5c20000 0x3f6a30000]
+01-21 03:17:06.878   299   299 D Zygote  : Forked child process 5202
+01-21 03:17:06.879   417   417 I perfetto: ftrace_procfs.cc:176    enabled ftrace
+01-21 03:17:07.448     0     0 W perfetto: enabled ftrace
+01-21 03:17:06.887   536   583 I ActivityManager: Start proc 5202:edu.singaporetech.shadyapp/u0a122 for pre-top-activity {edu.singaporetech.shady
+app/edu.singaporetech.shadyapp.MainActivity}
+01-21 03:17:06.887  5202  5202 I retech.shadyap: Late-enabling -Xcheck:jni
+01-21 03:17:06.899  5202  5202 I retech.shadyap: Unquickening 12 vdex files!
+01-21 03:17:06.900  5202  5202 W retech.shadyap: Unexpected CPU variant for X86 using defaults: x86
+01-21 03:17:06.908  4063  4069 I adbd    : jdwp connection from 5202
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_9 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_7 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_10 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_4 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_11 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_6 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_3 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_5 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_2 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.918   536   870 W InputReader: Device virtio_input_multi_touch_8 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_9 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_7 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_10 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_4 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_11 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_6 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_3 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_5 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_2 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.919   536   870 W InputReader: Device virtio_input_multi_touch_8 is associated with display ADISPLAY_ID_NONE.
+01-21 03:17:06.941  5202  5202 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+01-21 03:17:06.969  5202  5202 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+01-21 03:17:06.970  5202  5202 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+01-21 03:17:06.989   536   870 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+01-21 03:17:07.018  5202  5228 D libEGL  : loaded /vendor/lib/egl/libEGL_emulation.so
+01-21 03:17:07.021  5202  5228 D libEGL  : loaded /vendor/lib/egl/libGLESv1_CM_emulation.so
+01-21 03:17:07.025  5202  5228 D libEGL  : loaded /vendor/lib/egl/libGLESv2_emulation.so
+01-21 03:17:07.091   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.093   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.106   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.109   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.123   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.125   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.128  5202  5202 W retech.shadyap: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Land
+roid/graphics/Rect;)Z (greylist, reflection, allowed)
+01-21 03:17:07.128  5202  5202 W retech.shadyap: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (greylist, re
+flection, allowed)
+01-21 03:17:07.140   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.142   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.157   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.160   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.166  5202  5202 I ShadyApp: SERIAL: unknown
+01-21 03:17:07.166  5202  5202 I ShadyApp: MODEL: Android SDK built for x86
+01-21 03:17:07.167  5202  5202 I ShadyApp: ID: RSR1.210210.001.A1
+01-21 03:17:07.167  5202  5202 I ShadyApp: Manufacturer: unknown
+01-21 03:17:07.167  5202  5202 I ShadyApp: Brand: Android
+01-21 03:17:07.167  5202  5202 I ShadyApp: Type: userdebug
+01-21 03:17:07.167  5202  5202 I ShadyApp: User: android-build
+01-21 03:17:07.167  5202  5202 I ShadyApp: BASE: 1
+01-21 03:17:07.167  5202  5202 I ShadyApp: INCREMENTAL 7193139
+01-21 03:17:07.167  5202  5202 I ShadyApp: SDK  30
+01-21 03:17:07.167  5202  5202 I ShadyApp: BOARD: goldfish_x86
+01-21 03:17:07.167  5202  5202 I ShadyApp: BRAND Android
+01-21 03:17:07.167  5202  5202 I ShadyApp: HOST abfarm-east4-071
+01-21 03:17:07.167  5202  5202 I ShadyApp: FINGERPRINT: Android/sdk_phone_x86/generic_x86:11/RSR1.210210.001.A1/7193139:userdebug/dev-keys
+01-21 03:17:07.167  5202  5202 I ShadyApp: Version Code: 11
+01-21 03:17:07.174   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.176   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.190   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.192   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.206   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.208   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.219  5202  5226 D HostConnection: HostConnection::get() New Host Connection established 0xece53020, tid 5226
+01-21 03:17:07.223   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.224  5202  5226 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_native
+_sync_v3 ANDROID_EMU_native_sync_v4 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 AND
+ROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requiremen
+ts ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_has_shared_slots_host_memory_allocator ANDROID_EMU_vulkan_free_memory_syn
+c ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_read_color_buffer_dma GL_
+OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_2
+01-21 03:17:07.225   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.226   177   177 I hwservicemanager: getTransport: Cannot find entry android.hardware.configstore@1.0::ISurfaceFlingerConfigs/defau
+lt in either framework or device manifest.
+01-21 03:17:07.226  5202  5226 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+01-21 03:17:07.232  5202  5226 D EGL_emulation: eglCreateContext: 0xece52610: maj 2 min 0 rcv 2
+01-21 03:17:07.240   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.260  5202  5226 D EGL_emulation: eglMakeCurrent: 0xece52610: ver 2 0 (tinfo 0xed1b18b0) (first time)
+01-21 03:17:07.261   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.263   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.270   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.270   318   318 D goldfish-address-space: claimShared: Ask to claim region [0x3f8000000 0x3f8e10000]
+01-21 03:17:07.274   177   177 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in eithe
+r framework or device manifest.
+01-21 03:17:07.274  5202  5226 I Gralloc4: mapper 4.x is not supported
+01-21 03:17:07.275  5202  5226 D HostConnection: createUnique: call
+01-21 03:17:07.276  5202  5226 D HostConnection: HostConnection::get() New Host Connection established 0xece53100, tid 5226
+01-21 03:17:07.276  5202  5226 D goldfish-address-space: allocate: Ask for block of size 0x100
+01-21 03:17:07.276  5202  5226 D goldfish-address-space: allocate: ioctl allocate returned offset 0x3efffe000 size 0x2000
+01-21 03:17:07.280   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.282   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.290   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.292   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.298  5202  5226 D HostConnection: HostComposition ext ANDROID_EMU_CHECKSUM_HELPER_v1 ANDROID_EMU_native_sync_v2 ANDROID_EMU_native
+_sync_v3 ANDROID_EMU_native_sync_v4 ANDROID_EMU_dma_v1 ANDROID_EMU_direct_mem ANDROID_EMU_host_composition_v1 ANDROID_EMU_host_composition_v2 AND
+ROID_EMU_vulkan ANDROID_EMU_deferred_vulkan_commands ANDROID_EMU_vulkan_null_optional_strings ANDROID_EMU_vulkan_create_resources_with_requiremen
+ts ANDROID_EMU_YUV_Cache ANDROID_EMU_vulkan_ignored_handles ANDROID_EMU_has_shared_slots_host_memory_allocator ANDROID_EMU_vulkan_free_memory_syn
+c ANDROID_EMU_vulkan_shader_float16_int8 ANDROID_EMU_vulkan_async_queue_submit ANDROID_EMU_sync_buffer_data ANDROID_EMU_read_color_buffer_dma GL_
+OES_vertex_array_object GL_KHR_texture_compression_astc_ldr ANDROID_EMU_host_side_tracing ANDROID_EMU_gles_max_version_2
+01-21 03:17:07.299   318   318 D goldfish-address-space: claimShared: Ask to claim region [0x3f8e10000 0x3f9c20000]
+01-21 03:17:07.301   318   318 D goldfish-address-space: claimShared: Ask to claim region [0x3f9c20000 0x3faa30000]
+01-21 03:17:07.307   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.312   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.323   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.326   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.339   319   319 W EmuHWC2 : validate: layer 45 CompositionType 1, fallback
+01-21 03:17:07.341   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.351   536   581 D ArtManagerInternalImpl: /data/misc/iorapd/edu.singaporetech.shadyapp/1/edu.singaporetech.shadyapp.MainActivity/c
+ompiled_traces/compiled_trace.pb doesn't exist
+01-21 03:17:07.351   536   581 I ActivityTaskManager: Displayed edu.singaporetech.shadyapp/.MainActivity: +508ms
+01-21 03:17:07.352   536   575 D EventSequenceValidator: Transition from ACTIVITY_LAUNCHED to ACTIVITY_FINISHED
+01-21 03:17:07.357   319   319 W EmuHWC2 : validate: layer 46 CompositionType 1, fallback
+01-21 03:17:07.360   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.375   319   319 W EmuHWC2 : validate: layer 46 CompositionType 1, fallback
+01-21 03:17:07.387   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.390   319   319 W EmuHWC2 : validate: layer 46 CompositionType 1, fallback
+01-21 03:17:07.392   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0610
+01-21 03:17:07.407   319   319 W EmuHWC2 : validate: layer 46 CompositionType 1, fallback
+01-21 03:17:07.409   319   319 W EmuHWC2 : No layers, exit, buffer 0xefdc0e90
+01-21 03:17:07.473   385   385 E Layer   : [Surface(name=Task=1)/@0x2296f70 - animation-leash#0] No local sync point found
+01-21 03:17:07.473   385   385 E Layer   : [Surface(name=Task=1)/@0x2296f70 - animation-leash#0] No local sync point found
+01-21 03:17:07.473   385   385 E Layer   : [Surface(name=Task=16)/@0xf6e2304 - animation-leash#0] No local sync point found
+01-21 03:17:09.863   536  1466 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+01-21 03:17:07.473   385   385 E Layer   : [Surface(name=Task=16)/@0xf6e2304 - animation-leash#0] No local sync point found
+01-21 03:17:09.936   536  3419 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+01-21 03:17:11.851   417   417 I perfetto: probes_producer.cc:329  Producer stop (id=22)
+01-21 03:17:11.854   424   424 I perfetto: ng_service_impl.cc:1948 Tracing session 22 ended, total sessions:0
+01-21 03:17:11.855   439  5197 I iorapd  : Perfetto TraceBuffer saved to file: /data/misc/iorapd/edu.singaporetech.shadyapp/1/edu.singaporetech.s
+hadyapp.MainActivity/raw_traces/1642735031855624400.perfetto_trace.pb
+01-21 03:17:11.856   417   417 I perfetto: ftrace_procfs.cc:183    disabled ftrace
+01-21 03:17:12.424     0     0 W perfetto: disabled ftrace

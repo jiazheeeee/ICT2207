@@ -1,0 +1,29 @@
+Question 1: What do the arguments of the emulator command mean?
+-avd specifies the target .avd file that we want to start
+-no-boot-anim tells the emulator to boot without the boot animation
+
+Question 2: Android has an emulator and iOS has a simulator. What’s the 
+difference between an emulator and a simulator?
+Simulator creates a software environment while an emulator mimics the software and hardware features of a production environment.
+Question 3: What does the ps command do?
+ps lists all the running processes
+
+Question 4: What does the df command do?
+df shows the total/used/available disk space for each filesystem listed on the command line
+
+Question 5: What does the top command do?
+top shows process activity in real time
+
+Question 6: How do you use busybox to find all apks on the system?
+We can use the commands pm list packages | $busybox sed 's/^package:com.android.//g'
+
+Question 7: How do you spoof SMS, phonecalls and location via command line? What 
+commands should you issue?
+We can use the GSM utility. gsm call [phone number] allows us to simulate an inbound phone call from [phone number]
+
+Spoof location : Make use of the command
+"adb [-s <specific device>] shell am broadcast -a send.mock [-e lat<latitude>] [-e lon <longitude>]
+        [-e alt <altitude>] [-e accurate <accurate>]"
+
+Example usage:
+adb  shell am broadcast -a send.mock -e lat 15.3 -e lon 99
